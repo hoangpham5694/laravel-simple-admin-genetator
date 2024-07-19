@@ -1,0 +1,78 @@
+<?php
+
+namespace DummyNamespace;
+
+use App\Http\Controllers\Controller;
+
+class DummyClass extends Controller
+{
+    public function index()
+    {
+          $meta = [
+                'title' => '{{PageNameIndex}}',
+                'breadcrumbs' => [
+                    [
+                        'name' => 'Home',
+                        'url' => route('simple_admin_generation.dashboard')
+                    ],
+                    [
+                        'name' => '{{PageNameIndex}}'
+                    ]
+                ]
+          ];
+          return view('sag.{{ViewFolder}}.index', compact('meta'));
+    }
+
+    public function create()
+    {
+          $meta = [
+                'title' => '{{PageNameCreate}}',
+                'breadcrumbs' => [
+                    [
+                        'name' => 'Home',
+                        'url' => route('simple_admin_generation.dashboard')
+                    ],
+                    [
+                        'name' => '{{PageNameCreate}}'
+                    ]
+                ]
+          ];
+          return view('sag.{{ViewFolder}}.create', compact('meta'));
+    }
+    public function store()
+    {
+        //TODO implement store
+    }
+
+    public function edit($id)
+    {
+        $meta = [
+            'title' => '{{PageNameEdit}}',
+            'breadcrumbs' => [
+                [
+                    'name' => 'Home',
+                    'url' => route('simple_admin_generation.dashboard')
+                ],
+                [
+                    'name' => '{{PageNameIndex}}',
+                    'url' => route('simple_admin_generation.{{RouteName}}.index')
+                ],
+                [
+                    'name' => '{{PageNameEdit}}',
+                ]
+            ]
+        ];
+
+        return view('sag.{{ViewFolder}}.edit', compact('meta'));
+    }
+
+    public function update($id)
+    {
+        //TODO implement update
+    }
+
+    public function destroy()
+    {
+        //TODO implement destroy
+    }
+}
