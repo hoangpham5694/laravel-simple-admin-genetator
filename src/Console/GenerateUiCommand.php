@@ -1,15 +1,15 @@
 <?php
 
-namespace HoangPham\SimpleAdminGeneration\Console;
+namespace HoangPhamDev\SimpleAdminGenerator\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
 
-class GenerateCrudCommand extends Command
+class GenerateUiCommand extends Command
 {
-    protected $signature = 'sag:generate_crud {name}';
+    protected $signature = 'sag:generate_ui {name}';
 
     protected $description = 'Generate ui';
 
