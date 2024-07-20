@@ -1,6 +1,6 @@
 <?php
 
-namespace HoangPham\SimpleAdminGeneration\Models;
+namespace HoangPhamDev\SimpleAdminGenerator\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\SoftDeletes;

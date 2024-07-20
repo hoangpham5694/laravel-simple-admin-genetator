@@ -1,6 +1,6 @@
 <?php
 
-namespace HoangPham\SimpleAdminGeneration\Database\Seeders;
+namespace HoangPhamDev\SimpleAdminGenerator\Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;

@@ -1,10 +1,10 @@
 <?php
-namespace HoangPham\SimpleAdminGeneration;
+namespace HoangPhamDev\SimpleAdminGenerator;
 
-use HoangPham\SimpleAdminGeneration\Console\GenerateControllerCommand;
-use HoangPham\SimpleAdminGeneration\Console\GenerateCrudCommand;
-use HoangPham\SimpleAdminGeneration\Console\InstallCommand;
-use HoangPham\SimpleAdminGeneration\Http\Middleware\AuthAdmin;
+use HoangPhamDev\SimpleAdminGenerator\Console\GenerateControllerCommand;
+use HoangPhamDev\SimpleAdminGenerator\Console\GenerateUiCommand;
+use HoangPhamDev\SimpleAdminGenerator\Console\InstallCommand;
+use HoangPhamDev\SimpleAdminGenerator\Http\Middleware\AuthAdmin;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Routing\Router;
@@ -39,23 +39,30 @@ class PackageServiceProvider extends ServiceProvider
         ]);
         Config::set('auth.providers.admin', [
             'driver' => 'eloquent',
-            'model' => \HoangPham\SimpleAdminGeneration\Models\Admin::class,
+            'model' => \HoangPhamDev\SimpleAdminGenerator\Models\Admin::class,
         ]);
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                InstallCommand::class,
-                GenerateControllerCommand::class,
-                GenerateCrudCommand::class
-            ]);
-        }
+        $this->consoleConfiguration();
     }
 
-    protected function routeConfiguration()
+
+
+    protected function routeConfiguration(): array
     {
         return [
             'prefix' => 'admin',
             'middleware' => 'web',
         ];
+    }
+
+    protected function consoleConfiguration(): void
+    {
+        if ($this->app->runningInConsole()) {
+            $this->commands([
+                InstallCommand::class,
+                GenerateControllerCommand::class,
+                GenerateUiCommand::class
+            ]);
+        }
     }
 }

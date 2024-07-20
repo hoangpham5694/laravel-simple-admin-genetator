@@ -1,6 +1,6 @@
 <?php
 
-namespace HoangPham\SimpleAdminGeneration\Http\Middleware;
+namespace HoangPhamDev\SimpleAdminGenerator\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

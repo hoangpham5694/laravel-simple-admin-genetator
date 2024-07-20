@@ -1,6 +1,6 @@
 <?php
 
-namespace HoangPham\SimpleAdminGeneration\Console;
+namespace HoangPhamDev\SimpleAdminGenerator\Console;
 
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;

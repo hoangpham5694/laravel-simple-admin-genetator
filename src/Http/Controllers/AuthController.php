@@ -1,6 +1,6 @@
 <?php
 
-namespace HoangPham\SimpleAdminGeneration\Http\Controllers;
+namespace HoangPhamDev\SimpleAdminGenerator\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use HoangPham\SimpleAdminGeneration\Models\Admin;

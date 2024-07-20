@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use HoangPham\SimpleAdminGeneration\Http\Controllers\AuthController;
-use HoangPham\SimpleAdminGeneration\Http\Controllers\AdminController;
+use HoangPhamDev\SimpleAdminGenerator\Http\Controllers\AuthController;
+use HoangPhamDev\SimpleAdminGenerator\Http\Controllers\AdminController;
 
 Route::get('/login', [AuthController::class, 'index'])->name('simple_admin_generation.index');
 Route::post('/login', [AuthController::class, 'login'])->name('simple_admin_generation.login');
