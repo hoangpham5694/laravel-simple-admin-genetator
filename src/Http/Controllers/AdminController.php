@@ -23,7 +23,7 @@ class AdminController extends Controller
             'breadcrumbs' => [
                 [
                     'name' => 'Home',
-                    'url' => route('simple_admin_generation.dashboard')
+                    'url' => route('sag.dashboard')
                 ],
                 [
                     'name' => 'List Admin'
@@ -31,7 +31,7 @@ class AdminController extends Controller
             ]
         ];
         $admins = Admin::query()->paginate(10);
-        return view('simple_admin_generation::admin.index', compact('meta', 'admins'));
+        return view('sag::admin.index', compact('meta', 'admins'));
     }
 
     /**
@@ -45,11 +45,11 @@ class AdminController extends Controller
             'breadcrumbs' => [
                 [
                     'name' => 'Home',
-                    'url' => route('simple_admin_generation.dashboard')
+                    'url' => route('sag.dashboard')
                 ],
                 [
                     'name' => 'List Admin',
-                    'url' => route('simple_admin_generation.admin.index')
+                    'url' => route('sag.admin.index')
                 ],
                 [
                     'name' => 'Edit',
@@ -57,7 +57,7 @@ class AdminController extends Controller
             ]
         ];
         $admin = Admin::query()->findOrFail($id);
-        return view('simple_admin_generation::admin.edit', compact('meta', 'admin'));
+        return view('sag::admin.edit', compact('meta', 'admin'));
     }
 
     /**
@@ -82,8 +82,60 @@ class AdminController extends Controller
             ]
         ]);
         $admin->update($validated);
-        return redirect(route('simple_admin_generation.admin.edit', $id))->with('success', 'Update success');
+        return redirect(route('sag.admin.detail', $id))->with('success', 'Update success');
     }
+
+    /**
+     * @return Factory|View|Application
+     */
+    public function create(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|Application
+    {
+        $meta = [
+            'title' => 'Create admin',
+            'breadcrumbs' => [
+                [
+                    'name' => 'Home',
+                    'url' => route('sag.dashboard')
+                ],
+                [
+                    'name' => 'List Admin',
+                    'url' => route('sag.admin.index')
+                ],
+                [
+                    'name' => 'Create',
+                ]
+            ]
+        ];
+        $admin = new Admin();
+        return view('sag::admin.create', compact('meta', 'admin'));
+    }
+
+    /**
+     * @param Request $request
+     * @return Redirector|Application|RedirectResponse
+     */
+    public function store(Request $request): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
+    {
+        $validated = $request->validate([
+            'email' => [
+                'required',
+                'email',
+                Rule::unique('admins')
+            ],
+            'first_name'  => 'required|max:50',
+            'last_name'  => 'required|max:50',
+            'is_super_user' => [
+                'sometimes',
+                Rule::in([0, 1])
+            ],
+            'password' => ['required', 'confirmed', 'min:8'],
+        ]);
+        $validated['password'] = bcrypt($validated['password']);
+        $admin = new Admin();
+        $admin->create($validated);
+        return redirect(route('sag.admin.index'))->with('success', 'Create success');
+    }
+
 
     /**
      * @param $id
@@ -96,11 +148,11 @@ class AdminController extends Controller
             'breadcrumbs' => [
                 [
                     'name' => 'Home',
-                    'url' => route('simple_admin_generation.dashboard')
+                    'url' => route('sag.dashboard')
                 ],
                 [
                     'name' => 'List Admin',
-                    'url' => route('simple_admin_generation.admin.index')
+                    'url' => route('sag.admin.index')
                 ],
                 [
                     'name' => 'Edit',
@@ -108,7 +160,7 @@ class AdminController extends Controller
             ]
         ];
         $admin = Admin::query()->findOrFail($id);
-        return view('simple_admin_generation::admin.detail', compact('meta', 'admin'));
+        return view('sag::admin.detail', compact('meta', 'admin'));
     }
     public function update_password(Request $request, $id): \Illuminate\Routing\Redirector|\Illuminate\Contracts\Foundation\Application|\Illuminate\Http\RedirectResponse
     {
@@ -126,6 +178,6 @@ class AdminController extends Controller
         $admin = Admin::query()->findOrFail($request->id);
 
         $admin->delete();
-        return redirect(route('simple_admin_generation.admin.index'))->with('success', 'Delete success');
+        return redirect(route('sag.admin.index'))->with('success', 'Delete success');
     }
 }

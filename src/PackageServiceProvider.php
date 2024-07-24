@@ -2,6 +2,7 @@
 namespace HoangPhamDev\SimpleAdminGenerator;
 
 use HoangPhamDev\SimpleAdminGenerator\Console\GenerateControllerCommand;
+use HoangPhamDev\SimpleAdminGenerator\Console\GenerateHomeControllerCommand;
 use HoangPhamDev\SimpleAdminGenerator\Console\GenerateUiCommand;
 use HoangPhamDev\SimpleAdminGenerator\Console\InstallCommand;
 use HoangPhamDev\SimpleAdminGenerator\Http\Middleware\AuthAdmin;
@@ -22,7 +23,7 @@ class PackageServiceProvider extends ServiceProvider
         Route::group($this->routeConfiguration(), function () {
             $this->loadRoutesFrom(__DIR__.'/../routes/web.php');
         });
-        $this->loadViewsFrom(__DIR__.'/resources/views', 'simple_admin_generation');
+        $this->loadViewsFrom(__DIR__.'/resources/views', 'sag');
         if ($this->app->runningInConsole()) {
             // Publish assets
             $this->publishes([
@@ -61,7 +62,8 @@ class PackageServiceProvider extends ServiceProvider
             $this->commands([
                 InstallCommand::class,
                 GenerateControllerCommand::class,
-                GenerateUiCommand::class
+                GenerateUiCommand::class,
+                GenerateHomeControllerCommand::class
             ]);
         }
     }
