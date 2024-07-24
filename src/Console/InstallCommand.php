@@ -31,11 +31,14 @@ class InstallCommand extends Command
         $this->copyDirectory(__DIR__.'/../../stubs/public', public_path('sag'));
         file_put_contents(
             './routes/web.php',
-            "\nRoute::middleware(['admin'])->group(function () {\n Route::get('/admin/dashboard', [\App\Http\Controllers\SAG\HomeController::class, 'dashboard'])->name('simple_admin_generation.dashboard');\n});\n",
+            "\nRoute::middleware(['admin'])->group(function () {\n Route::get('/admin/dashboard', [\App\Http\Controllers\SAG\HomeController::class, 'dashboard'])->name('sag.dashboard');\n});\n",
             FILE_APPEND
         );
-        Artisan::call('migrate');
 
+        Artisan::call("sag:generate_home_controller HomeController");
+
+        $this->info('Generating data...');
+        Artisan::call('migrate');
         Artisan::call('db:seed --class="HoangPhamDev\\\SimpleAdminGenerator\\\Database\\\Seeders\\\AdminSeeder"');
 
         $this->info('Done');
