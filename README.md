@@ -29,6 +29,7 @@ Also, you will need to install Composer: https://getcomposer.org/doc/00-intro.md
 And Laravel: https://laravel.com/docs/9.x/installation
 
 Make sure all database connections are set up correctly in your .env file.
+
 Installation
 ------------
 
