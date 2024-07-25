@@ -3,7 +3,7 @@
 
 <p align="center">⛵<code>simple-admin-generator</code> is a powerful and easy-to-use package for generating admin functionalities in your Laravel application. With a focus on simplicity and efficiency, this package streamlines the creation and management of admin panels, making it easier for developers to build robust backend systems.</p>
 <p align="center">
-]
+
 
 <a href="https://packagist.org/packages/hoangphamdev/simple-admin-generator">
     <img src="https://img.shields.io/badge/vesion-V1.0.2-blue" alt="Packagist">
