@@ -3,7 +3,7 @@
 namespace HoangPhamDev\SimpleAdminGenerator\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use HoangPham\SimpleAdminGeneration\Models\Admin;
+use HoangPhamDev\SimpleAdminGenerator\Models\Admin;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function index()
     {
-        return view('simple_admin_generation::login');
+        return view('sag::login');
     }
 
     public function login(Request $request)
@@ -21,7 +21,7 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
         if (Auth::guard('admin')->attempt($credentials)) {
-            return redirect(route('simple_admin_generation.dashboard'));
+            return redirect(route('sag.dashboard'));
         }
         return back()->withErrors([
             'password' => 'The provided credentials do not match our records.',
@@ -31,7 +31,7 @@ class AuthController extends Controller
     public function logout()
     {
         Auth::guard('admin')->logout();
-        return redirect(route('simple_admin_generation.login'));
+        return redirect(route('sag.login'));
     }
 
     public function profile(): \Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View|Application
@@ -41,7 +41,7 @@ class AuthController extends Controller
             'breadcrumbs' => [
                 [
                     'name' => 'Home',
-                    'url' => route('simple_admin_generation.dashboard')
+                    'url' => route('sag.dashboard')
                 ],
                 [
                     'name' => 'Profile',
@@ -49,6 +49,6 @@ class AuthController extends Controller
             ]
         ];
         $admin = Admin::query()->findOrFail(Auth::guard('admin')->user()->id);
-        return view('simple_admin_generation::user.profile', compact('meta', 'admin'));
+        return view('sag::user.profile', compact('meta', 'admin'));
     }
 }

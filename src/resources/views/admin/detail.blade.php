@@ -37,7 +37,7 @@
                             </p>
                         </div>
                         <div class="card-footer">
-                            <button type="button" id="btnRedirect" data-url="{{route('simple_admin_generation.admin.index')}}" class="btn btn-default">Back</button>
+                            <button type="button" id="btnRedirect" data-url="{{route('sag.admin.index')}}" class="btn btn-default">Back</button>
                         </div>
                     </div>
             </div>

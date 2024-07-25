@@ -24,7 +24,7 @@
         <div class="card-body login-card-body">
             <p class="login-box-msg">Sign in to start your session</p>
 
-            <form action="{{route('simple_admin_generation.login')}}" method="post">
+            <form action="{{route('sag.login')}}" method="post">
                 @csrf
                 <div class="form-group">
                     <div class="input-group">

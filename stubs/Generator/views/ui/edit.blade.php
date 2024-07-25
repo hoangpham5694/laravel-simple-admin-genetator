@@ -20,7 +20,7 @@
 
                         </div>
                         <div class="card-footer">
-                            <button type="button" id="btnRedirect" data-url="{{route('simple_admin_generation.{{ViewFolder}}.index')}}" class="btn btn-default">Cancel</button>
+                            <button type="button" id="btnRedirect" data-url="{{route('sag.{{ViewFolder}}.index')}}" class="btn btn-default">Cancel</button>
                             <button type="submit" class="btn btn-info">Submit</button>
                         </div>
                     </div>

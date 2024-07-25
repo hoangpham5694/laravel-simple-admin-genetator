@@ -67,7 +67,7 @@
             </a>
             <div class="dropdown-menu dropdown-menu-sm dropdown-menu-right">
 
-                <a href="{{route('simple_admin_generation.profile')}}" class="dropdown-item">Profile</a>
+                <a href="{{route('sag.profile')}}" class="dropdown-item">Profile</a>
                 <div class="dropdown-divider"></div>
                 <a href="javascript:void(0)" onclick="$('#formLogout').submit()" class="dropdown-item">
                     Logout
@@ -76,4 +76,4 @@
         </li>
     </ul>
 </nav>
-<form action="{{route('simple_admin_generation.logout')}}" id="formLogout" method="post">@csrf</form>
+<form action="{{route('sag.logout')}}" id="formLogout" method="post">@csrf</form>

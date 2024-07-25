@@ -3,7 +3,7 @@
     @include('sag.components.page_header')
     <section class="content">
         <div class="card">
-            <form action="{{route('simple_admin_generation.admin.destroy')}}" method="POST" id="frmDelete">
+            <form action="{{route('sag.admin.destroy')}}" method="POST" id="frmDelete">
                 @csrf
                 <input type="hidden" name="id" class="txt_id">
             </form>
@@ -53,12 +53,12 @@
                                     @endif
                                 </td>
                                 <td class="project-actions text-right">
-                                    <a class="btn btn-primary btn-sm" href="{{route('simple_admin_generation.admin.detail', $admin->id)}}">
+                                    <a class="btn btn-primary btn-sm" href="{{route('sag.admin.detail', $admin->id)}}">
                                         <i class="fas fa-eye">
                                         </i>
                                         View
                                     </a>
-                                    <a class="btn btn-info btn-sm" href="{{route('simple_admin_generation.admin.edit', $admin->id)}}">
+                                    <a class="btn btn-info btn-sm" href="{{route('sag.admin.edit', $admin->id)}}">
                                         <i class="fas fa-pencil-alt">
                                         </i>
                                         Edit
@@ -86,7 +86,7 @@
                 </table>
             </div>
             <div class="card-footer clearfix">
-               {{$admins->links('simple_admin_generation::components.paginator')}}
+               {{$admins->links('sag::components.paginator')}}
             </div>
         </div>
     </section>

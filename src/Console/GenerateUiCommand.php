@@ -16,7 +16,7 @@ class GenerateUiCommand extends Command
     const MENU_HTML = <<<EOF
                 <li class="nav-item {{ request()->is('admin/<URL_PATH>*') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('admin/<URL_PATH>*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-list"></i>
                         <p>
                             <PAGE_NAME>
                             <i class="fas fa-angle-left right"></i>
@@ -68,7 +68,7 @@ class GenerateUiCommand extends Command
         $this->info('Generating router');
         file_put_contents(
             './routes/web.php',
-            "\nRoute::get('/admin/$routeName', [\App\Http\Controllers\SAG\\$controllerName::class, 'index'])->middleware('admin')->name('simple_admin_generation.$routeName.index');\nRoute::get('/admin/$routeName/create', [\App\Http\Controllers\SAG\\$controllerName::class, 'create'])->middleware('admin')->name('simple_admin_generation.$routeName.create');\nRoute::get('/admin/$routeName/edit/{\$id}', [\App\Http\Controllers\SAG\\$controllerName::class, 'edit'])->middleware('admin')->name('simple_admin_generation.$routeName.edit');\n",
+            "\nRoute::get('/admin/$routeName', [\App\Http\Controllers\SAG\\$controllerName::class, 'index'])->middleware('admin')->name('sag.$routeName.index');\nRoute::get('/admin/$routeName/create', [\App\Http\Controllers\SAG\\$controllerName::class, 'create'])->middleware('admin')->name('sag.$routeName.create');\nRoute::get('/admin/$routeName/edit/{\$id}', [\App\Http\Controllers\SAG\\$controllerName::class, 'edit'])->middleware('admin')->name('sag.$routeName.edit');\n",
             FILE_APPEND
         );
 
@@ -89,8 +89,8 @@ class GenerateUiCommand extends Command
 
         $menuHtml = Str::replace('<URL_PATH>', $routeName, self::MENU_HTML);
         $menuHtml = Str::replace('<PAGE_NAME>', $name, $menuHtml);
-        $menuHtml = Str::replace('<ROUTE_NAME_INDEX>', "simple_admin_generation.$routeName.index", $menuHtml);
-        $menuHtml = Str::replace('<ROUTE_NAME_CREATE>', "simple_admin_generation.$routeName.create", $menuHtml);
+        $menuHtml = Str::replace('<ROUTE_NAME_INDEX>', "sag.$routeName.index", $menuHtml);
+        $menuHtml = Str::replace('<ROUTE_NAME_CREATE>', "sag.$routeName.create", $menuHtml);
         $menuHtml .= PHP_EOL."<!--DO NOT REMOVE--><!--MENU_GENERATION--><!--DO NOT REMOVE-->";
         $content = Str::replace('<!--DO NOT REMOVE--><!--MENU_GENERATION--><!--DO NOT REMOVE-->', PHP_EOL.$menuHtml, $content);
         file_put_contents(resource_path('views/sag/layouts/sidebar.blade.php'), $content);

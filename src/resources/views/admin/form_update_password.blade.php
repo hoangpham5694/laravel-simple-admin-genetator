@@ -1,4 +1,4 @@
-<form action="{{route('simple_admin_generation.admin.update_password', $admin->id)}}" method="POST">
+<form action="{{route('sag.admin.update_password', $admin->id)}}" method="POST">
     @csrf
     <div class="card card-secondary">
         <div class="card-header">

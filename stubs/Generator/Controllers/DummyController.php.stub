@@ -13,7 +13,7 @@ class DummyClass extends Controller
                 'breadcrumbs' => [
                     [
                         'name' => 'Home',
-                        'url' => route('simple_admin_generation.dashboard')
+                        'url' => route('sag.dashboard')
                     ],
                     [
                         'name' => '{{PageNameIndex}}'
@@ -30,7 +30,7 @@ class DummyClass extends Controller
                 'breadcrumbs' => [
                     [
                         'name' => 'Home',
-                        'url' => route('simple_admin_generation.dashboard')
+                        'url' => route('sag.dashboard')
                     ],
                     [
                         'name' => '{{PageNameCreate}}'
@@ -51,11 +51,11 @@ class DummyClass extends Controller
             'breadcrumbs' => [
                 [
                     'name' => 'Home',
-                    'url' => route('simple_admin_generation.dashboard')
+                    'url' => route('sag.dashboard')
                 ],
                 [
                     'name' => '{{PageNameIndex}}',
-                    'url' => route('simple_admin_generation.{{RouteName}}.index')
+                    'url' => route('sag.{{RouteName}}.index')
                 ],
                 [
                     'name' => '{{PageNameEdit}}',
