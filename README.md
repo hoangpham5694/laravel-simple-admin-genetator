@@ -28,8 +28,7 @@ If you don't already have an Apache local environment with PHP and MySQL, use on
 Also, you will need to install Composer: https://getcomposer.org/doc/00-intro.md   
 And Laravel: https://laravel.com/docs/9.x/installation
 
-Make sure all database connection has been set up correctly in your .env file
-
+Make sure all database connections are set up correctly in your .env file.
 Installation
 ------------
 
@@ -58,7 +57,7 @@ php artisan sag:generate_ui <Your functionnalities name>
 Example: `php artisan sag:generate_ui Blog`
 
 Then open `http://localhost/admin/blog` to see your new UI.
-Your files of functionalities will generate follow structure below. Open and edit them by the way you want.
+Your functionality files will be generated following the structure below. Open and edit them as you wish.
 #### File Structure
 ```
 ┣ 📂Http
