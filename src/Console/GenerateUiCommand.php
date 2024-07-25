@@ -16,7 +16,7 @@ class GenerateUiCommand extends Command
     const MENU_HTML = <<<EOF
                 <li class="nav-item {{ request()->is('admin/<URL_PATH>*') ? 'menu-is-opening menu-open' : '' }}">
                     <a href="#" class="nav-link {{ request()->is('admin/<URL_PATH>*') ? 'active' : '' }}">
-                        <i class="nav-icon fas fa-users"></i>
+                        <i class="nav-icon fas fa-list"></i>
                         <p>
                             <PAGE_NAME>
                             <i class="fas fa-angle-left right"></i>
