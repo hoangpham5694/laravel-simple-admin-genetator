@@ -41,7 +41,7 @@ composer require hoangphamdev/simple-admin-generator
 
 Run following command to install.
 ```
-php arisan sag:install
+php artisan sag:install
 ```
 Open `http://localhost/admin/login` in browser,use email `admin@sag.com` and password `secret` to login.
 
@@ -51,6 +51,8 @@ Documentation
 ------------
 
 ### Generate new UI
+This feature will generate a basic UI for you so that you can quickly create your own CRUD functionality.
+
 Run following command:
 ```
 php artisan sag:generate_ui <Your functionnalities name>

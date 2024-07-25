@@ -5,6 +5,7 @@ namespace HoangPhamDev\SimpleAdminGenerator\Console;
 use Illuminate\Console\Command;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
+
 class InstallCommand extends Command
 {
 

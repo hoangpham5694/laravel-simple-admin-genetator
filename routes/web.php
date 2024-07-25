@@ -16,7 +16,6 @@ Route::middleware(['admin'])->group(function () {
     Route::post('/admins/edit/{id}', [AdminController::class, 'update'])->name('sag.admin.update');
     Route::get('/admins/create', [AdminController::class, 'create'])->name('sag.admin.create');
     Route::post('/admins/store', [AdminController::class, 'store'])->name('sag.admin.store');
-    Route::post('/admins/update-password/{id}', [AdminController::class, 'update_password'])->name('sag.admin.update_password');
+    Route::post('/admins/update-password/{id}', [AdminController::class, 'updatePassword'])->name('sag.admin.update_password');
     Route::post('/admins/destroy', [AdminController::class, 'destroy'])->name('sag.admin.destroy');
-
 });

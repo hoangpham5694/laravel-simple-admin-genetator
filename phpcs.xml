@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<ruleset name="Custom Standard">
+    <rule ref="PSR2">
+        <exclude name="Generic.Files.LineLength"/>
+        <exclude name="PSR1.Classes.ClassDeclaration.MissingNamespace"/>
+    </rule>
+    <file>src/Console</file>
+    <file>src/Http</file>
+    <file>src/Models</file>
+    <file>src/PackageServiceProvider.php</file>
+    <file>database</file>
+    <file>routes</file>
+</ruleset>

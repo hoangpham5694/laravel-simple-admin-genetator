@@ -33,7 +33,7 @@ class GenerateControllerCommand extends GeneratorCommand
 
     protected function doOtherOperations()
     {
-        $name = Str::replace('Controller', '' ,$this->argument('name'));
+        $name = Str::replace('Controller', '', $this->argument('name'));
 
         // Get the fully qualified class name (FQN)
         $class = $this->qualifyClass($this->getNameInput());
@@ -49,7 +49,6 @@ class GenerateControllerCommand extends GeneratorCommand
         $content = Str::replace('{{PageNameEdit}}', 'Edit ' . $name, $content);
         $content = Str::replace('{{ViewFolder}}', Str::lower($name), $content);
         $content = Str::replace('{{RouteName}}', Str::lower($name), $content);
-
 
         file_put_contents($path, $content);
     }
